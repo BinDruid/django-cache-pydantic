@@ -8,7 +8,6 @@ requires = [
 name = "django-cache-pydantic"
 version = "0.0.1"
 description = "django-cache-pydantic is a Django application to integrate pydantic models into django cache with an orm interface."
-readme = {file = "README.rst", content-type = "text/x-rst"}
 keywords = [
   "cache",
   "django",
@@ -18,9 +17,10 @@ keywords = [
 license = {text = "MIT"}
 maintainers = [{name = "Ali Abharya", email = "abharya.dev@gmail.com"}]
 authors = [{name = "Ali Abharya", email = "abharya.dev@gmail.com"}]
+readme = {file = "README.rst", content-type = "text/x-rst"}
 requires-python = ">=3.8"
 classifiers = [
-  "Development Status :: 1 - Production/Stable",
+  "Development Status :: 1 - Planning",
   "Environment :: Web Environment",
   "Framework :: Django",
   "Framework :: Django :: 4.2",

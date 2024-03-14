@@ -1,8 +1,8 @@
 Django Cache Pydantic
-=============
+=========================
 
-This package allows you to create and retrieve pydantic instances directly
-in your django project cache.
+This package allows you to create pydantic instances directly inside
+your django project cache and retrieve them
 
 Status
 ------
@@ -28,6 +28,7 @@ Dependencies
 
 Install
 -------
+
 .. code:: bash
 
    pip install django-cache-pydantic

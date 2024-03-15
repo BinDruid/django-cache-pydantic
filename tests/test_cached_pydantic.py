@@ -35,7 +35,7 @@ class TestCachedPydanticModel(SimpleTestCase):
         cache_instance = default_cache.get(new_instance.pk)
         value_under_test = new_instance.pk
         value_expected = cache_instance.pk
-        self.assertEqual(value_under_test, value_expected, msg='Did not get expected from cache')
+        self.assertEqual(value_under_test, value_expected, msg='Did not create into cache')
 
     def test_create_new_cache_instance_via_save_method(self):
         creation_context = {'username': 'ali', 'mobile_number': '09304444444'}
@@ -44,12 +44,20 @@ class TestCachedPydanticModel(SimpleTestCase):
         cache_instance = default_cache.get(new_instance.pk)
         value_under_test = new_instance.pk
         value_expected = cache_instance.pk
-        self.assertEqual(value_under_test, value_expected, msg='Did not get expected from cache')
+        self.assertEqual(value_under_test, value_expected, msg='Did not create into cache')
 
     def test_retrieve_cache_instance_via_get_method(self):
         creation_context = {'username': 'ali', 'mobile_number': '09304444444'}
         new_instance = SampleTestModel.objects.create(**creation_context)
         cache_instance = SampleTestModel.objects.get(new_instance.pk)
+        value_under_test = new_instance.pk
+        value_expected = cache_instance.pk
+        self.assertEqual(value_under_test, value_expected, msg='Did not get expected from cache')
+
+    def test_retrieve_cache_instance_via_get_method_and_user_defined_pk(self):
+        creation_context = {'username': 'ali', 'mobile_number': '09304444444'}
+        new_instance = SampleTestModel.objects.create(**creation_context)
+        cache_instance = SampleTestModel.objects.get(creation_context['username'])
         value_under_test = new_instance.pk
         value_expected = cache_instance.pk
         self.assertEqual(value_under_test, value_expected, msg='Did not get expected from cache')

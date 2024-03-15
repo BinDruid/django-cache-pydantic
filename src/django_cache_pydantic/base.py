@@ -36,8 +36,8 @@ class PydanticCachedModel(BaseModel):
 
     def __init__(self, /, **data):
         super().__init__(**data)
-        partial_id = uuid4().hex
-        setattr(self, '_id', partial_id)
+        internal_id = uuid4().hex
+        setattr(self, '_id', internal_id)
 
     @computed_field
     def id(self) -> str:
@@ -46,12 +46,12 @@ class PydanticCachedModel(BaseModel):
 
         :return: str: The composite ID.
         """
-        partial_id = self._id
-        composite_id = partial_id
+        internal_id = self._id
+        cache_key = internal_id
         pk_field = getattr(self.CacheMeta, 'primary_key_field', None)
         if pk_field is not None:
-            composite_id = "%s__%s" % (str(getattr(self, pk_field)), partial_id)
-        return composite_id
+            cache_key = str(getattr(self, pk_field))
+        return cache_key
 
     @computed_field
     def pk(self) -> str:

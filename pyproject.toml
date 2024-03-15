@@ -6,7 +6,7 @@ requires = [
 
 [project]
 name = "django-cache-pydantic"
-version = "0.0.2"
+version = "0.0.3"
 description = "Django application to integrate pydantic models into django cache with an orm interface."
 keywords = [
   "cache",
@@ -20,7 +20,7 @@ authors = [{name = "Ali Abharya", email = "abharya.dev@gmail.com"}]
 readme = {file = "README.rst", content-type = "text/x-rst"}
 requires-python = ">=3.8"
 classifiers = [
-  "Development Status :: 1 - Planning",
+  "Development Status :: 3 - Alpha",
   "Environment :: Web Environment",
   "Framework :: Django",
   "Framework :: Django :: 3.2",
@@ -44,7 +44,7 @@ dependencies = [
   "Django>=3.2",
 ]
 [project.urls]
-Changelog = "https://github.com/bindruid/django-cache-pydantic/blob/main/CHANGELOG.rst"
+Changelog = "https://github.com/bindruid/django-cache-pydantic/blob/master/CHANGELOG.rst"
 Repository = "https://github.com/bindruid/django-cache-pydantic"
 
 [tool.black]

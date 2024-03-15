@@ -6,6 +6,8 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = ['cache_pydantic']
 
+USE_TZ = False
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',

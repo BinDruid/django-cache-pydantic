@@ -6,7 +6,7 @@ requires = [
 
 [project]
 name = "django-cache-pydantic"
-version = "0.0.1"
+version = "0.0.2"
 description = "Django application to integrate pydantic models into django cache with an orm interface."
 keywords = [
   "cache",

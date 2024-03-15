@@ -1,7 +1,7 @@
 Django Cache Pydantic
 =========================
 
-Django cache pydantic is a minimal wrapper around django cache framework which allows you
+Django Cache Pydantic is a minimal wrapper around django cache framework which allows you
 to create pydantic instances directly inside your django project cache and retrieve them
 using a similar interface like django orm.
 
@@ -37,14 +37,14 @@ Install
 Usage
 -----
 
-1. Edit settings.py and add `django_cache_pydantic` to your INSTALLED_APPS (also config CACHES setting)
+1. Edit settings.py and add `django_cache_pydantic` to your `INSTALLED_APPS` (also config `CACHES` setting)
 
 
 2. Inherit your pydantic model from `PydanticCachedModel`
 
 .. code:: python
 
-    from from django_cache_pydantic import PydanticCachedModel
+    from django_cache_pydantic import PydanticCachedModel
 
 
     class Person(PydanticCachedModel):
@@ -83,7 +83,20 @@ Usage
         # do some stuff
 
 
-Cache pydantic Settings
+Cache pydantic meta class
+-----------------
+- You can control cache pydantic models behavior using a custom meta class called `CacheMeta`
+
+.. code:: python
+
+    class CacheMeta:
+        cache_backend: str # refers to a predefined cache settings
+        ttl: int # default timeout for instance to live in cache
+        primary_key_field: str # could be set to be used as cache key
+        verbose: str # verbose name of base model
+
+
+Cache pydantic Project Settings
 -----------------
 - Default cache to save pydantic models into
 

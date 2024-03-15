@@ -8,7 +8,7 @@ from django.core.cache import caches
 from django.test import SimpleTestCase
 from pydantic import Field
 
-from src.cache_pydantic import PydanticCachedModel
+from src.django_cache_pydantic import PydanticCachedModel
 
 default_cache = caches['default']
 default_ttl = 60 * 10

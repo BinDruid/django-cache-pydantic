@@ -1,6 +1,6 @@
 from django.core.cache import caches
 
-from src.cache_pydantic.conf import conf
+from src.django_cache_pydantic.conf import conf
 
 
 class CacheMetaOptions:

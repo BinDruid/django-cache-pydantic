@@ -4,7 +4,7 @@ SECRET_KEY = 'NOTASECRET'
 
 ALLOWED_HOSTS = ['*']
 
-INSTALLED_APPS = ['cache_pydantic']
+INSTALLED_APPS = ['django_cache_pydantic']
 
 USE_TZ = False
 

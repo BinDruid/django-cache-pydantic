@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from src.cache_pydantic.defaults import default_cache
-from src.cache_pydantic.defaults import default_ttl
+from src.django_cache_pydantic.defaults import default_cache
+from src.django_cache_pydantic.defaults import default_ttl
 from django.conf import settings
 
 

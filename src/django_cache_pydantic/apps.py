@@ -4,5 +4,5 @@ from django.apps import AppConfig
 
 
 class CachePydanticAppConfig(AppConfig):
-    name = "cache_pydantic"
+    name = "django_cache_pydantic"
     verbose_name = "django-cache-pydantic"

@@ -23,6 +23,9 @@ classifiers = [
   "Development Status :: 1 - Planning",
   "Environment :: Web Environment",
   "Framework :: Django",
+  "Framework :: Django :: 3.2",
+  "Framework :: Django :: 4.0",
+  "Framework :: Django :: 4.1",
   "Framework :: Django :: 4.2",
   "Framework :: Django :: 5.0",
   "Intended Audience :: Developers",
@@ -30,13 +33,15 @@ classifiers = [
   "Natural Language :: English",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: Implementation :: CPython",
   "Typing :: Typed",
 ]
 dependencies = [
   "Pydantic>=2.6",
-  "Django>=4.2",
+  "Django>=3.2",
 ]
 [project.urls]
 Changelog = "https://github.com/bindruid/django-cache-pydantic/blob/main/CHANGELOG.rst"

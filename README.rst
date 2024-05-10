@@ -8,8 +8,8 @@ using a similar interface like django orm.
 Status
 ------
 
-.. image:: https://github.com/bindruid/django-cache-pydantic/workflows/Test/badge.svg?branch=master
-   :target: https://github.com/bindruid/django-cache-pydantic/actions
+.. image:: https://img.shields.io/github/actions/workflow/status/bindruid/django-cache-pydantic/test.yml.svg?branch=master
+   :target: https://github.com/bindruid/django-cache-pydantic/actions?workflow=Test
 
 .. image:: https://img.shields.io/pypi/v/django-cache-pydantic.svg
    :target: https://pypi.python.org/pypi/django-cache-pydantic

@@ -6,3 +6,10 @@ Changelog
 -----------------
 
 * Initial release
+
+0.4 (2024-05-10)
+-----------------
+
+* Name space internal ids with class name
+
+* Enable cache deletion via delete method

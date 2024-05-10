@@ -32,7 +32,8 @@ class TestCachedPydanticModel(SimpleTestCase):
     def test_create_new_cache_instance_via_object_manager(self):
         creation_context = {'username': 'ali', 'mobile_number': '09304444444'}
         new_instance = SampleTestModel.objects.create(**creation_context)
-        cache_instance = default_cache.get(new_instance.pk)
+        cache_id = new_instance._get_composite_id()
+        cache_instance = default_cache.get(cache_id)
         value_under_test = new_instance.pk
         value_expected = cache_instance.pk
         self.assertEqual(value_under_test, value_expected, msg='Did not create into cache')
@@ -41,7 +42,8 @@ class TestCachedPydanticModel(SimpleTestCase):
         creation_context = {'username': 'ali', 'mobile_number': '09304444444'}
         new_instance = SampleTestModel(**creation_context)
         new_instance.save()
-        cache_instance = default_cache.get(new_instance.pk)
+        cache_id = new_instance._get_composite_id()
+        cache_instance = default_cache.get(cache_id)
         value_under_test = new_instance.pk
         value_expected = cache_instance.pk
         self.assertEqual(value_under_test, value_expected, msg='Did not create into cache')
@@ -68,7 +70,8 @@ class TestCachedPydanticModel(SimpleTestCase):
         with time_machine.travel(new_instance.created_at, tick=False) as time_traveller:
             time_shift = datetime.timedelta(seconds=default_ttl - 20)
             time_traveller.shift(time_shift)
-            cache_instance = default_cache.get(new_instance.pk)
+            cache_id = new_instance._get_composite_id()
+            cache_instance = default_cache.get(cache_id)
             value_under_test = new_instance.pk
             value_expected = cache_instance.pk
             self.assertEqual(value_under_test, value_expected, msg='Did not get expected from cache')

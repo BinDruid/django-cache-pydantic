@@ -36,8 +36,8 @@ class PydanticCachedModel(BaseModel):
 
     def __init__(self, /, **data):
         super().__init__(**data)
-        internal_id = uuid4().hex
-        setattr(self, '_id', internal_id)
+        _internal_id = uuid4().hex
+        setattr(self, '_internal_id', _internal_id)
 
     @computed_field
     def id(self) -> str:
@@ -46,12 +46,15 @@ class PydanticCachedModel(BaseModel):
 
         :return: str: The composite ID.
         """
-        internal_id = self._id
-        cache_key = internal_id
         pk_field = getattr(self.CacheMeta, 'primary_key_field', None)
-        if pk_field is not None:
-            cache_key = str(getattr(self, pk_field))
-        return cache_key
+        return getattr(self, pk_field) if pk_field is not None else self._internal_id
+
+    def _get_composite_id(self) -> str:
+        """
+        Returns composite ID composed of class name and internal id.
+        :return: str: The composite ID.
+        """
+        return f'{self.__class__.__name__.lower()}__{self.id}'
 
     @computed_field
     def pk(self) -> str:
@@ -62,4 +65,13 @@ class PydanticCachedModel(BaseModel):
         Saves the instance in the cache with a specified time-to-live (ttl).
         """
         cache = self._cache_meta.cache_backend
-        cache.set(self.pk, self, self._cache_meta.ttl)
+        composite_id = self._get_composite_id()
+        cache.set(composite_id, self, self._cache_meta.ttl)
+
+    def delete(self):
+        """
+        Delete the instance from the cache.
+        """
+        cache = self._cache_meta.cache_backend
+        composite_id = self._get_composite_id()
+        cache.delete(composite_id)

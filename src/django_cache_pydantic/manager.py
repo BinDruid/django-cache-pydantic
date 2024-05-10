@@ -24,7 +24,17 @@ class Manager:
         """
 
         cache = self.cache_meta_class.cache_backend
-        return cache.get(pk)
+        composite_id = f'{self.model_class.__name__.lower()}__{pk}'
+        return cache.get(composite_id)
+
+    def delete(self, pk):
+        """
+        Delete a model instance from the cache based on the primary key.
+        """
+
+        cache = self.cache_meta_class.cache_backend
+        composite_id = f'{self.model_class.__name__.lower()}__{pk}'
+        return cache.delete(composite_id)
 
 
 class CacheManager:

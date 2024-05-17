@@ -6,7 +6,7 @@ requires = [
 
 [project]
 name = "django-cache-pydantic"
-version = "0.1.0"
+version = "0.1.1"
 description = "Django application to integrate pydantic models into django cache with an orm interface."
 keywords = [
   "cache",
@@ -47,15 +47,6 @@ dependencies = [
 Changelog = "https://github.com/bindruid/django-cache-pydantic/blob/master/CHANGELOG.rst"
 Repository = "https://github.com/bindruid/django-cache-pydantic"
 
-[tool.black]
-target-version = ['py38']
-
-[tool.isort]
-add_imports = [
-    "from __future__ import annotations"
-]
-force_single_line = true
-profile = "black"
 
 [tool.pytest.ini_options]
 addopts = """\

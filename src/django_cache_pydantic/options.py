@@ -37,8 +37,6 @@ class CacheMetaOptions:
 
         """
         original_attrs = {key: value for key, value in self.originals.items() if key in self.default_cache_attr}
-        cache_meta_class_attrs = {
-            key: original_attrs.get(key) or self.defaults[key] for key in self.default_cache_attr
-        }
+        cache_meta_class_attrs = {key: original_attrs.get(key) or self.defaults[key] for key in self.default_cache_attr}
         cache_meta_class = type('CacheMeta', (), cache_meta_class_attrs)
         return cache_meta_class

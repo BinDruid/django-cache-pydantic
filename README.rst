@@ -3,7 +3,7 @@ Django Cache Pydantic
 
 Django Cache Pydantic is a minimal wrapper around django cache framework which allows you
 to create pydantic instances directly inside your django project cache and retrieve them
-using a similar interface like django orm.
+using a similar interface to django orm.
 
 Status
 ------

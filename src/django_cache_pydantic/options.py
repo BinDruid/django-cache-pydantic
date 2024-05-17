@@ -1,5 +1,4 @@
 from django.core.cache import caches
-
 from src.django_cache_pydantic.conf import conf
 
 
@@ -18,11 +17,13 @@ class CacheMetaOptions:
         """
 
         default_dict = {key: None for key in self.default_cache_attr}
-        default_dict.update({
-            'ttl': conf.CACHE_PYDANTIC_DEFAULT_TTL,
-            'cache_backend': caches[conf.CACHE_PYDANTIC_DEFAULT_CACHE],
-            'verbose': cls.__name__
-        })
+        default_dict.update(
+            {
+                'ttl': conf.CACHE_PYDANTIC_DEFAULT_TTL,
+                'cache_backend': caches[conf.CACHE_PYDANTIC_DEFAULT_CACHE],
+                'verbose': cls.__name__,
+            }
+        )
         self.defaults = default_dict
         self.originals = {}
         if original_cache_class is not None:
@@ -35,10 +36,7 @@ class CacheMetaOptions:
         returns: type: The created CacheMeta class.
 
         """
-        original_attrs = {
-            key: value for key, value in self.originals.items() if key in self.default_cache_attr
-        }
-        cache_meta_class_attrs = {key: original_attrs.get(key, None) or self.defaults[key] for key in
-                                  self.default_cache_attr}
+        original_attrs = {key: value for key, value in self.originals.items() if key in self.default_cache_attr}
+        cache_meta_class_attrs = {key: original_attrs.get(key) or self.defaults[key] for key in self.default_cache_attr}
         cache_meta_class = type('CacheMeta', (), cache_meta_class_attrs)
         return cache_meta_class

@@ -16,6 +16,7 @@ class PydanticCachedModel(BaseModel):
     Attributes:
         objects (ClassVar): Model manager with a similar interface to django ORM.
     """
+
     objects: ClassVar = CacheManager()
 
     @classmethod

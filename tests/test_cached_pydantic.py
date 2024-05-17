@@ -7,7 +7,6 @@ import time_machine
 from django.core.cache import caches
 from django.test import SimpleTestCase
 from pydantic import Field
-
 from src.django_cache_pydantic import PydanticCachedModel
 
 default_cache = caches['default']
@@ -25,7 +24,6 @@ class SampleTestModel(PydanticCachedModel):
 
 
 class TestCachedPydanticModel(SimpleTestCase):
-
     def tearDown(self):
         default_cache.clear()
 

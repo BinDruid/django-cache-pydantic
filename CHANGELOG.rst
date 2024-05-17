@@ -13,3 +13,10 @@ Changelog
 * Name space internal ids with class name
 
 * Enable cache deletion via delete method
+
+1.1 (2024-05-17)
+-----------------
+
+* Add ruff lint and format
+
+* Enable pre-commit hooks
